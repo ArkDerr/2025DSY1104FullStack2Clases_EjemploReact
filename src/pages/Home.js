@@ -27,6 +27,18 @@ export default function Home() {
     },
     {
       id: 4,
+      titulo: "Bombones de chocolate 2",
+      precio: "3.500 (1kg)",
+      imagen: dchocolate,
+    },
+    {
+      id: 5,
+      titulo: "Pastel de chocolate 2",
+      precio: "25.000",
+      imagen: pchocolate,
+    },
+    {
+      id: 6,
       titulo: "Pie de limón 2",
       precio: "20.000",
       imagen: plimon,
