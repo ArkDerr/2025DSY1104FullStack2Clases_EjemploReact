@@ -1,3 +1,4 @@
+import React from "react";
 import pasteleracherry from "../assets/img/pasteleracherry.jpg";
 import pastelero from "../assets/img/pastelero-1jpg.webp";
 import pistacho from "../assets/img/pistacho.jpg";
@@ -115,7 +116,7 @@ export default function Home() {
                     (col-md-4): ocupa 1/3 (3 por fila). mb-4 → da un margen inferior
                     para separar las filas. h-100 → hace que todas las cards de una fila
                     tengan la misma altura. */}
-                    <div className="card h-100">
+                    <div className="card h-100" data-testid="producto">
                       <img
                         className="card-img-top"
                         src={prod.imagen}

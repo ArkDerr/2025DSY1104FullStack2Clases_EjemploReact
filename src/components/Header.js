@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import logopasteleria from "../assets/img/logopasteleria.png";
 
@@ -7,7 +8,7 @@ export default function Header() {
       <nav className="navbar navbar-expand-lg pastel-navbar">
         <div className="container-fluid">
           <img
-            classNameName="logo"
+            className="logo"
             src={logopasteleria}
             alt="Logo Pastelería"
           />
@@ -39,7 +40,10 @@ export default function Header() {
                 </Link>
               </li>
               <li className="nav-item">
-                <a id="txtregistro" className="nav-link" href="registro.html">
+                <a 
+                  id="txtregistro"
+                  className="nav-link" 
+                  href="registro.html">
                   Registrarse
                 </a>
               </li>
