@@ -1,26 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logopasteleria from "../assets/img/logopasteleria.png";
+import { useAuth } from "../auth/AuthContext";
 
 export default function Header() {
+  const { isAuthenticated, user, logout } = useAuth();
+
   return (
     <header>
       <nav className="navbar navbar-expand-lg pastel-navbar">
         <div className="container-fluid">
-          <img
-            className="logo"
-            src={logopasteleria}
-            alt="Logo Pastelería"
-          />
+          <img className="logo" src={logopasteleria} alt="Logo Pastelería" />
           <a className="navbar-brand ms-3" href="#">
             Pastelería Mil Sabores
           </a>
+
           <button
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
+            data-bs-target="#header"
+            aria-controls="header"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
@@ -34,28 +34,33 @@ export default function Header() {
                   Inicio
                 </Link>
               </li>
+
+              {/* Mostrar Login y Registrarse si no está logueado */}
+              {!isAuthenticated && (
+                <>
+                  <li className="nav-item">
+                    <Link to="/login" className="nav-link text-decoration-none">
+                      Login
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      id="txtregistro"
+                      className="nav-link"
+                      href="registro.html"
+                    >
+                      Registrarse
+                    </a>
+                  </li>
+                </>
+              )}
+
               <li className="nav-item">
-                <Link to="/login" className="nav-link text-decoration-none">
-                  Login
+                <Link to="/noticias" className="nav-link text-decoration-none">
+                  Blogs y Noticias
                 </Link>
               </li>
-              <li className="nav-item">
-                <a 
-                  id="txtregistro"
-                  className="nav-link" 
-                  href="registro.html">
-                  Registrarse
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  id="txtnoticias"
-                  className="nav-link"
-                  href="https://www.duoc.cl/noticias/"
-                >
-                  Blogs y Noticias
-                </a>
-              </li>
+
               <li className="nav-item">
                 <a
                   id="txtrecetas"
@@ -65,16 +70,27 @@ export default function Header() {
                   Perfil
                 </a>
               </li>
+
               <li className="nav-item">
                 <a id="txtconsejos" className="nav-link" href="#">
                   Consejos
                 </a>
               </li>
-              <li className="av-item">
-                <a className="nav-link" href="" id="txtsalir">
-                  Salir
-                </a>
-              </li>
+
+              {/* mostrar "Salir" cuando está logueado */}
+              {isAuthenticated && (
+                <li className="nav-item">
+                  <button
+                    className="nav-link btn btn-link p-0"
+                    id="txtsalir"
+                    onClick={logout}
+                    type="button"
+                  >
+                    Salir
+                  </button>
+                </li>
+              )}
+
               <li className="nav-item dropdown">
                 <a
                   id="txtmenu"
