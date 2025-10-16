@@ -50,7 +50,7 @@ export default function Home() {
     <div>
       <div
         id="carouselExampleAutoplaying"
-        className="carousel slide"
+        className="carousel slide mt-4 mb-5"
         data-bs-ride="carousel"
         data-bs-interval="10000"
       >
@@ -102,10 +102,9 @@ export default function Home() {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
-
-      <div className="container-fluid">
-        <div className="row">
-          <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <main className="col-12 col-xl-10 mx-auto px-3">
+        <div className="container-fluid">
+          <div className="row">
             <h1 className="pastel-navbar">Nuestros Productos</h1>
             <div className="container-fluid">
               <div className="row">
@@ -134,9 +133,9 @@ export default function Home() {
                 ))}
               </div>
             </div>
-          </main>
+          </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }

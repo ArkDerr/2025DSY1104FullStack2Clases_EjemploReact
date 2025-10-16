@@ -35,26 +35,6 @@ export default function Header() {
                 </Link>
               </li>
 
-              {/* Mostrar Login y Registrarse si no está logueado */}
-              {!isAuthenticated && (
-                <>
-                  <li className="nav-item">
-                    <Link to="/login" className="nav-link text-decoration-none">
-                      Login
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      id="txtregistro"
-                      className="nav-link"
-                      href="registro.html"
-                    >
-                      Registrarse
-                    </a>
-                  </li>
-                </>
-              )}
-
               <li className="nav-item">
                 <Link to="/noticias" className="nav-link text-decoration-none">
                   Blogs y Noticias
@@ -64,7 +44,7 @@ export default function Header() {
               <li className="nav-item">
                 <a
                   id="txtrecetas"
-                  className="nav-link"
+                  className="nav-link text-decoration-none"
                   href="perfil-usuario.html"
                 >
                   Perfil
@@ -72,55 +52,48 @@ export default function Header() {
               </li>
 
               <li className="nav-item">
-                <a id="txtconsejos" className="nav-link" href="#">
+                <a
+                  id="txtconsejos"
+                  className="nav-link text-decoration-none"
+                  href="#"
+                >
                   Consejos
                 </a>
               </li>
 
-              {/* mostrar "Salir" cuando está logueado */}
-              {isAuthenticated && (
-                <li className="nav-item">
-                  <button
-                    className="nav-link btn btn-link p-0"
-                    id="txtsalir"
-                    onClick={logout}
-                    type="button"
-                  >
-                    Salir
-                  </button>
-                </li>
-              )}
-
               <li className="nav-item dropdown">
                 <a
                   id="txtmenu"
-                  className="nav-link dropdown-toggle"
-                  href="menu.html"
+                  className="nav-link dropdown-toggle text-decoration-none"
+                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  onClick={(e) => e.preventDefault()} // evita navegación
                 >
                   Menú
                 </a>
+
                 <ul className="dropdown-menu">
                   <li>
-                    <a className="dropdown-item" href="menu.html">
+                    <Link className="dropdown-item" to="/menu/pasteles">
                       Pasteles
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="menu.html">
+                    <Link className="dropdown-item" to="/menu/galletas">
                       Galletas
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="menu.html">
+                    <Link className="dropdown-item" to="/menu/dulces">
                       Dulces
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="administrador.html">
+                    <Link className="dropdown-item" to="/admin">
                       Administrador
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -137,6 +110,46 @@ export default function Header() {
                 Buscar
               </button>
             </form>
+
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              {/* Mostrar Login y Registrarse si no está logueado */}
+              {!isAuthenticated && (
+                <>
+                  <li className="nav-item">
+                    <Link to="/login" className="nav-link text-decoration-none">
+                      Login
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      id="txtregistro"
+                      className="nav-link text-decoration-none"
+                      href="registro.html"
+                    >
+                      Registrarse
+                    </a>
+                  </li>
+                </>
+              )}
+
+              {/* mostrar "Salir" cuando está logueado */}
+              {isAuthenticated && (
+                <li className="nav-item">
+                  <a
+                    href="#"
+                    className="nav-link text-decoration-none"
+                    id="txtsalir"
+                    role="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      logout();
+                    }}
+                  >
+                    Salir
+                  </a>
+                </li>
+              )}
+            </ul>
           </div>
         </div>
       </nav>
