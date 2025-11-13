@@ -13,6 +13,8 @@ import Login from "./pages/Login";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import BlogNoticias from "./pages/BlogNoticias";
+import Registro from "./pages/Registro";
+import Perfil from "./pages/Perfil";
 import { AuthProvider } from "./auth/AuthContext";
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/noticias" element={<BlogNoticias />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/registro" element={<Registro />} />
+        <Route path="/perfil" element={<Perfil />} />
       </Routes>
       <Footer />
     </AuthProvider>

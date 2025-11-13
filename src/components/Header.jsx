@@ -42,13 +42,9 @@ export default function Header() {
               </li>
 
               <li className="nav-item">
-                <a
-                  id="txtrecetas"
-                  className="nav-link text-decoration-none"
-                  href="perfil-usuario.html"
-                >
+                <Link to="/perfil" className="nav-link text-decoration-none">
                   Perfil
-                </a>
+                </Link>
               </li>
 
               <li className="nav-item">
@@ -121,13 +117,9 @@ export default function Header() {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <a
-                      id="txtregistro"
-                      className="nav-link text-decoration-none"
-                      href="registro.html"
-                    >
+                    <Link to="/registro" className="nav-link text-decoration-none">
                       Registrarse
-                    </a>
+                    </Link>
                   </li>
                 </>
               )}

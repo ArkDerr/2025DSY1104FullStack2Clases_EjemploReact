@@ -1,3 +1,4 @@
+// src/pages/Login.jsx
 import { Helmet } from "react-helmet";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +8,7 @@ export default function Login() {
   const navigate = useNavigate();
   const { login, isAuthenticated } = useAuth();
 
-  const [usuario, setUsuario] = useState("");
+  const [correo, setCorreo] = useState("");
   const [contrasena, setContrasena] = useState("");
   const [errorInline, setErrorInline] = useState("");
 
@@ -21,16 +22,19 @@ export default function Login() {
       const modal = new window.bootstrap.Modal(modalEl);
       modal.show();
     } else {
-      setErrorInline("Usuario o contraseña incorrecta");
+      // fallback ya se maneja con errorInline
     }
   };
 
   const manejarLogin = async () => {
     setErrorInline("");
-    const res = await login(usuario.trim(), contrasena);
+
+    const res = await login(correo.trim(), contrasena);
+
     if (res.ok) {
       navigate("/", { replace: true });
     } else {
+      setErrorInline(res.message || "Usuario o contraseña incorrecta");
       mostrarModalError();
     }
   };
@@ -56,18 +60,18 @@ export default function Login() {
           <h2>Inicio de sesión</h2>
 
           <div className="mb-3 text-start">
-            <label htmlFor="usuario" className="form-label">
-              Usuario:
+            <label htmlFor="correo" className="form-label">
+              Correo:
             </label>
             <input
-              type="text"
-              name="usuario"
-              id="usuario"
+              type="email"
+              name="correo"
+              id="correo"
               className="form-control"
-              value={usuario}
-              onChange={(e) => setUsuario(e.target.value)}
+              value={correo}
+              onChange={(e) => setCorreo(e.target.value)}
               onKeyDown={manejarEnter}
-              autoComplete="username"
+              autoComplete="email"
             />
           </div>
 
@@ -104,10 +108,7 @@ export default function Login() {
             </button>
           </div>
 
-          <div className="text-muted small">
-            <strong>Demo:</strong> usuario <code>admin</code> — clave{" "}
-            <code>123456</code>
-          </div>
+          {/* ya no mostramos demo de admin fijo */}
         </div>
       </main>
 
@@ -132,7 +133,7 @@ export default function Login() {
               ></button>
             </div>
             <div className="modal-body">
-              <p>Usuario o contraseña incorrecta</p>
+              <p>{errorInline || "Usuario o contraseña incorrecta"}</p>
             </div>
             <div className="modal-footer">
               <button
